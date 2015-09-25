@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.js"],"names":[],"mappings":";;AAAA,CAAC,YAAY;AACT,gBAAY,CAAC;;AAEb,QAAI,CAAC,YAAA,CAAC;CAET,CAAA,EAAG,CAAC","file":"bundle.js","sourcesContent":["(function () {\n    \"use strict\";\n\n    let x;\n\n})();"],"sourceRoot":"/source/"}
