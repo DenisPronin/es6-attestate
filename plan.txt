@@ -1,7 +1,5 @@
 Введение в EcmaScript- 2015 (ES6)
 
-// https://github.com/hakimel/reveal.js
-
 1. Введение
     - Что это за стандарт?
     - Поддержка браузерами.
@@ -37,3 +35,8 @@
     - Set, Map, WeakSet и WeakMap
     - Promise
     - Генераторы
+
+
+
+
+// https://github.com/hakimel/reveal.js
