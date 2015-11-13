@@ -3,9 +3,48 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>ES6 attestation</title>
+
+    <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css"/>
+    <link rel="stylesheet" href="node_modules/reveal.js/css/theme/black.css"/>
 </head>
 <body>
 
+    <div class="reveal">
+        <div class="slides">
+            
+            <section id="slide-1" class="slide">
+                <h1> Введение в ES6 </h1>
+                <img src="img/es6-logo.png" alt="es6-logo"/>
+            </section>
+            
+            <section id="slide-2" class="slide">
+                <h1> О стандарте </h1>
+
+                <p>
+                    Язык JavaScript cтандартизирутеся организацией ECMA (наподобие W3C)
+                </p>
+                <p>
+                    ECMAScript - не только для браузеров, но и для node.js
+                </p>
+                <p>
+                    Принят в июне 2015. ES5 - был в 2009 году.
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="node_modules/reveal.js/js/reveal.js"></script>
     <script src="dist/bundle.js"></script>
+
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            mouseWheel: false
+        });
+
+    </script>
 </body>
 </html>
