@@ -6,44 +6,115 @@
 
     <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css"/>
     <link rel="stylesheet" href="node_modules/reveal.js/css/theme/black.css"/>
+    <link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css"/>
+    <link rel="stylesheet" href="css/attestation.css"/>
 </head>
 <body>
 
     <div class="reveal">
         <div class="slides">
-            
+
             <section id="slide-1" class="slide">
                 <h1> Введение в ES6 </h1>
                 <img src="img/es6-logo.png" alt="es6-logo"/>
             </section>
-            
+
             <section id="slide-2" class="slide">
                 <h1> О стандарте </h1>
 
+                <ul>
+                    <li>Название стандарта - ECMAScript</li>
+                    <li>Текущая версия - ES-2015 (ES6)</li>
+                    <li>ES5 - был в 2009 году.</li>
+                </ul>
+            </section>
+
+            <section id="slide-3" class="slide">
+                <h1> Browser Support </h1>
+
+                <a href="https://kangax.github.io/compat-table/es6/" target="_blank">https://kangax.github.io/compat-table/es6/</a>
+
+                <img src="img/es6-browser-support.png" alt=""/>
+            </section>
+
+            <section id="slide-4" class="slide">
+                <h1> Browser Support </h1>
+
+                <img src="img/grumpy-cat.jpg" alt=""/>
+            </section>
+
+            <section id="slide-5" class="slide">
+                <h1> Babel </h1>
+                <a href="https://babeljs.io/" target="_blank">https://babeljs.io/</a>
+                <img src="img/keep-calm.jpg" alt=""/>
+
                 <p>
-                    Язык JavaScript cтандартизирутеся организацией ECMA (наподобие W3C)
+                    Преобразует код из ES-2015 в ES5 <br/>
+                    ES5 поддерживается везде
                 </p>
+
+                <p>Легко добавляется в состав системы сборки frontend'a (Gulp, Grunt, Webpack ...)</p>
+            </section>
+
+            <section id="slide-6" class="slide">
+                <h1> Browser Support with Babel </h1>
+                <img src="img/lucky-cat.jpeg" alt=""/>
+            </section>
+
+            <section id="slide-7" class="slide">
+                <h1> Фичи ES6 </h1>
+                <img src="img/back-to-future.jpeg" alt=""/>
+            </section>
+
+            <section id="slide-8" class="slide slide-attestation">
+                <h1>Объявление переменной с let </h1>
+
                 <p>
-                    ECMAScript - не только для браузеров, но и для node.js
+                    <strong>Область видимости переменной let — блок {}</strong>
                 </p>
-                <p>
-                    Принят в июне 2015. ES5 - был в 2009 году.
-                </p>
+                <div class="col-50">
+                    <h3>ES5</h3>
+                    <pre><code data-trim data-noescape class="javascript">
+var apples = 5;
+if (true) {
+    var apples = 10;
+    alert(apples); // 10
+}
+alert(apples); // 10
+                    </code></pre>
+                </div>
+                <div class="col-50">
+                    <h3>ES-2015</h3>
+                    <pre><code data-trim data-noescape class="javascript">
+let apples = 5; // (*)
+if (true) {
+    let apples = 10;
+    alert(apples); // 10
+}
+alert(apples); // 5
+                    </code></pre>
+                </div>
+
+
             </section>
 
         </div>
     </div>
 
     <script src="node_modules/reveal.js/js/reveal.js"></script>
+    <script src="node_modules/reveal.js/plugin/highlight/highlight.js"></script>
     <script src="dist/bundle.js"></script>
 
     <script>
         Reveal.initialize({
+            height: 900,
             controls: true,
             progress: true,
             history: true,
             mouseWheel: false
         });
+
+        hljs.initHighlightingOnLoad();
 
     </script>
 </body>
