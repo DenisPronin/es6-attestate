@@ -6,3 +6,15 @@
     float: left;
     width: 50%;
 }
+
+.align-left {
+    text-align: left;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.term {
+    color: #42affa;
+}
