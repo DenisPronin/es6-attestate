@@ -459,6 +459,165 @@ rabbit.walk();
                 </ul>
             </section>
 
+            <section id="slide-31" class="slide">
+                <h1>Классы</h1>
+                <p>Синтаксис</p>
+
+                <pre><code data-trim data-noescape class="javascript">
+class Название [extends Родитель]  {
+    constructor
+    методы
+}
+                </code></pre>
+                <img src="img/saharok.jpg" alt=""/>
+            </section>
+
+            <section id="slide-32" class="slide">
+                <h2>Классы</h2>
+
+                <pre><code data-trim data-noescape class="javascript long-code">
+class User {
+    constructor(name) {
+        this.name = name;
+    }
+
+    sayHi() {
+        alert(this.name);
+    }
+}
+
+let user = new User("Вася");
+user.sayHi(); // Вася
+                </code></pre>
+            </section>
+
+            <section id="slide-33" class="slide">
+                <h2>Классы</h2>
+                <p>Геттеры и сеттеры</p>
+
+                <pre><code data-trim data-noescape class="javascript long-code">
+class User {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+   }
+
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+
+    set fullName(newValue) {
+        [this.firstName, this.lastName] = newValue.split(' ');
+    }
+}
+
+let user = new User("Вася", "Пупкин");
+alert( user.fullName ); // Вася Пупков
+user.fullName = "Иван Петров";
+alert( user.fullName ); // Иван Петров
+
+                </code></pre>
+            </section>
+
+            <section id="slide-34" class="slide">
+                <h2>Классы</h2>
+                <p>Статические свойства</p>
+
+                <pre><code data-trim data-noescape class="javascript long-code">
+class User {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    static createGuest() {
+      return new User("Гость", "Сайта");
+    }
+};
+
+let user = User.createGuest();
+
+                </code></pre>
+            </section>
+
+            <section id="slide-35" class="slide">
+                <h2>Классы</h2>
+                <p>Наследование</p>
+
+                <div class="col-50">
+                    <pre><code data-trim data-noescape class="javascript">
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  walk() {
+    alert(`${this.name} walk`);
+  }
+}
+                    </code></pre>
+                </div>
+                <div class="col-50">
+                    <pre><code data-trim data-noescape class="javascript">
+class Rabbit extends Animal {
+    walk() {
+        super.walk();
+        alert("...and jump!");
+    }
+}
+
+new Rabbit("Вася").walk();
+                    </code></pre>
+                </div>
+            </section>
+
+            <section id="slide-36" class="slide">
+                <h2>Классы</h2>
+                <p>private и protected свойства</p>
+
+                <img src="img/grumpy-cat3.png" alt=""/>
+            </section>
+
+            <section id="slide-37" class="slide">
+                <h2>Модули</h2>
+
+                <ul>
+                    <li>AMD (Require.js)</li>
+                    <li>Common.js (Node.js)</li>
+                </ul>
+            </section>
+
+            <section id="slide-38" class="slide">
+                <h2>Модули: export</h2>
+
+                <p class="align-left">Ключевое слово <strong>export</strong> можно ставить:</p>
+
+                <ul>
+                    <li>
+                        <div>Перед объявлением переменных, функций и классов</div>
+                        <pre><code data-trim data-noescape class="javascript">
+export let one = 1;
+                        </code></pre>
+                    </li>
+                    <li>
+                        <div>Отдельно, при этом в фигурных скобках указывается, что именно экспортируется</div>
+                        <pre><code data-trim data-noescape class="javascript">
+let one = 1;
+let two = 2;
+export {one as once, two as twice};
+                        </code></pre>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="slide-39" class="slide">
+                <h2>Модули: import</h2>
+
+                <pre><code data-trim data-noescape class="javascript">
+import {one, two} from "./nums";
+                </code></pre>
+            </section>
+
         </div>
     </div>
 

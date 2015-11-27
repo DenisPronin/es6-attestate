@@ -18,3 +18,7 @@
 .term {
     color: #42affa;
 }
+
+.reveal pre code.long-code {
+    max-height: 500px;
+}
