@@ -22,3 +22,7 @@
 .reveal pre code.long-code {
     max-height: 500px;
 }
+
+.reveal ul.left-ul {
+    display: block;
+}

@@ -618,13 +618,177 @@ import {one, two} from "./nums";
                 </code></pre>
             </section>
 
+            <section id="slide-40" class="slide">
+                <h1>ES6. Коллекции</h1>
+
+                <ul>
+                    <li>Map</li>
+                    <li>Set</li>
+                    <li>WeakSet</li>
+                    <li>WeakMap</li>
+                </ul>
+            </section>
+
+            <section id="slide-41" class="slide">
+                <h1>Map</h1>
+
+                <p class="align-left">Object. Ключ - только строка</p>
+                <p class="align-left">Map. Ключ - произвольный тип</p>
+                <pre><code data-trim data-noescape class="javascript">
+let map = new Map([
+    ['string',  'str1'],
+    [1,    'num1']
+]);
+map.set(true, 'bool1');
+map.size() // 3
+                </code></pre>
+            </section>
+
+            <section id="slide-42" class="slide">
+                <h1>Map. Методы</h1>
+
+                <ul class="left-ul">
+                    <li>
+                        map.delete(key)
+                    </li>
+                    <li>
+                        map.clear()
+                    </li>
+                    <li>
+                        map.has(key)
+                    </li>
+                </ul>
+
+                <p>Для итерации используются:</p>
+                <ul class="left-ul">
+                    <li>
+                        map.keys() - по ключам
+                    </li>
+                    <li>
+                        map.values() - по значениям
+                    </li>
+                    <li>
+                        map.entries() - возвращает массив [ключ, значение]
+                    </li>
+                </ul>
+            </section>
+
+            <section id="slide-43" class="slide">
+                <h1>Map</h1>
+
+                <pre><code data-trim data-noescape class="javascript">
+let recipeMap = new Map([
+    ['огурцы', '500 гр'],
+    ['помидоры', '300гр'],
+]);
+
+for(let key of recipeMap.keys()) {
+    alert(key); // огурцы, помидоры
+}
+
+for(let amount of recipeMap.values()) {
+    alert(amount); // 500 гр, 350 гр
+}
+
+for(let entry of recipeMap)
+    alert(entry); // ['огурцы', '500 гр'] ...
+}
+                </code></pre>
+            </section>
+
+            <section id="slide-44" class="slide">
+                <h1>Set</h1>
+
+                <p>Коллекция множества уникальных значений</p>
+                <pre><code data-trim data-noescape class="javascript">
+let set = new Set();
+
+let vasya = {name: "Вася"};
+let petya = {name: "Петя"};
+let dasha = {name: "Даша"};
+
+set.add(vasya);
+set.add(petya);
+set.add(dasha);
+set.add(vasya);
+set.add(petya);
+
+alert( set.size ); // 3
+set.forEach( user => alert(user.name ) ); // Вася, Петя, Даша
+                </code></pre>
+            </section>
+
+            <section id="slide-45" class="slide">
+                <h1>Set. Методы</h1>
+
+                <ul>
+                    <li>
+                        set.add(item)
+                    </li>
+                    <li>
+                        set.delete(item)
+                    </li>
+                    <li>
+                        set.has(item)
+                    </li>
+                    <li>
+                        set.clear()
+                    </li>
+                </ul>
+            </section>
+
+            <section id="slide-46" class="slide">
+                <h1>WeakSet и WeakMap</h1>
+
+                <div class="align-left">
+                    <div>Особый вид коллекций не препятствующий сборщику мусора удалять свои элементы.</div>
+                    <div>Работают только на запись и чтение по ключу</div>
+                </div>
+
+                <p>Ограничения:</p>
+                <ul>
+                    <li>
+                        Нет свойства size
+                    </li>
+                    <li>
+                        Нельзя итерировать
+                    </li>
+                    <li>
+                        Нет метода clear
+                    </li>
+                </ul>
+            </section>
+
+            <section id="slide-47" class="slide">
+                <h1>WeakMap. Пример</h1>
+
+                <pre><code data-trim data-noescape class="javascript">
+let activeUsers = [
+    {name: "Vasia"},
+    {name: "Petia"},
+    {name: "Masha"}
+];
+
+let weakMap = new WeakMap();
+
+weakMap.set(activeUsers[0], 1);
+weakMap.set(activeUsers[1], 2);
+weakMap.set(activeUsers[2], 3);
+
+alert( weakMap.get(activeUsers[0]) ); // 1
+
+activeUsers.splice(0, 1); // в weakMap теперь только 2 элемента
+activeUsers.splice(0, 1); // в weakMap теперь только 1 элемент
+                </code></pre>
+            </section>
+
         </div>
     </div>
 
     <script src="node_modules/reveal.js/js/reveal.js"></script>
     <script src="node_modules/reveal.js/plugin/highlight/highlight.js"></script>
-    <!--<script src="dist/bundle.js"></script>-->
-    <script src="js/app.js"></script>
+    <script src="dist/bundle.js"></script>
+    <!--<script src="js/app.js"></script>-->
 
     <script>
         Reveal.initialize({
