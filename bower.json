@@ -1,0 +1,19 @@
+{
+  "name": "es6-attestation",
+  "version": "0.0.0",
+  "homepage": "https://github.com/DenisPronin/es6-attestate",
+  "authors": [
+    "pronin <denis.pronin@sibers.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal.js-menu": "~0.5.0"
+  }
+}

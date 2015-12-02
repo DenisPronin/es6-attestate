@@ -30,3 +30,7 @@
 .reveal ul.left-ul {
     display: block;
 }
+
+.reveal .slide-menu-overlay {
+    overflow: auto !important;
+}

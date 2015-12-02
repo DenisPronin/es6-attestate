@@ -1025,6 +1025,7 @@ execute( showUserAvatar(), null, callback );
         </div>
     </div>
 
+    <script src="dist/reveal.js/lib/js/head.min.js"></script>
     <script src="dist/reveal.js/js/reveal.js"></script>
     <script src="dist/reveal.js/plugin/highlight/highlight.js"></script>
     <script src="dist/bundle.js"></script>
@@ -1036,7 +1037,18 @@ execute( showUserAvatar(), null, callback );
             controls: true,
             progress: true,
             history: true,
-            mouseWheel: false
+            mouseWheel: false,
+
+            menu: {
+                themes: false,
+                transitions: false,
+                markers: true
+            },
+
+            dependencies: [
+                { src: 'bower_components/reveal.js-menu/menu.js' }
+            ]
+
         });
 
         hljs.initHighlightingOnLoad();
