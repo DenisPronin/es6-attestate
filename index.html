@@ -174,7 +174,7 @@ alert(last);  // Последний
 
             <section id="slide-14" class="slide">
                 <h2>Деструктуризация. Оператор Spread</h2>
-                <pre><code data-trim data-noescape class="javascript">
+                <pre class="wide-code"><code data-trim data-noescape class="javascript">
 let [first, last, ...rest] = "Юлий Цезарь Император Рима".split(" ")
 alert(first); // Юлий
 alert(last);  // Цезарь
@@ -276,7 +276,7 @@ alert(`Sum of: ${apples} + ${oranges} = ${apples + oranges}`);
                 <img src="img/cat2.jpg" alt=""/>
             </section>
 
-            <section id="slide-21" class="slide">
+            <section id="slide-21" class="slide" data-menu-title="Функции. Параметры по умолчанию">
                 <h1>Функции</h1>
                 <p>
                     Параметры по умолчанию
@@ -291,7 +291,7 @@ func("Меню"); // Меню 100 200
                 </code></pre>
             </section>
 
-            <section id="slide-22" class="slide">
+            <section id="slide-22" class="slide" data-menu-title="Функции. Оператор spread">
                 <h1>Функции</h1>
                 <p>
                     Оператор spread вместо arguments
@@ -307,7 +307,7 @@ showName("Юлий", "Цезарь", "Император", "Рима");
                 </code></pre>
             </section>
 
-            <section id="slide-23" class="slide">
+            <section id="slide-23" class="slide" data-menu-title="Функции. Деструктуризация в параметрах">
                 <h1>Функции</h1>
                 <p>
                     Деструктуризация в параметрах
@@ -327,7 +327,7 @@ showMenu(options);
                 </code></pre>
             </section>
 
-            <section id="slide-24" class="slide">
+            <section id="slide-24" class="slide" data-menu-title="Функции. Другое">
                 <h1>Функции</h1>
                 <ul>
                     <li>
@@ -343,7 +343,7 @@ f.name === "f" // true
                 </ul>
             </section>
 
-            <section id="slide-25" class="slide">
+            <section id="slide-25" class="slide" data-menu-title="Функции. Стрелочный синтаксис">
                 <h1>Функции</h1>
                 <p>
                     Стрелочный синтаксис
@@ -365,7 +365,7 @@ var positive = numbers.filter(num => num > 0);
                 </div>
             </section>
 
-            <section id="slide-26" class="slide">
+            <section id="slide-26" class="slide" data-menu-title="Объекты. Короткое свойство">
                 <h1>Объекты</h1>
                 <p>
                     Короткое свойство
@@ -385,7 +385,7 @@ alert( JSON.stringify(user) );
                 </div>
             </section>
 
-            <section id="slide-27" class="slide">
+            <section id="slide-27" class="slide" data-menu-title="Объекты. Вычисляемые свойства">
                 <h1>Объекты</h1>
                 <p>
                     Вычисляемые свойства
@@ -401,7 +401,7 @@ let user = {
                 </div>
             </section>
 
-            <section id="slide-28" class="slide">
+            <section id="slide-28" class="slide" data-menu-title="Объекты. Методы">
                 <h1>Объекты</h1>
                 <p>
                     Методы объекта
@@ -422,7 +422,7 @@ user.sayHi(); // Вася
                 </div>
             </section>
 
-            <section id="slide-29" class="slide">
+            <section id="slide-29" class="slide" data-menu-title="Объекты. __proto__ и super">
                 <h1>Объекты</h1>
                 <p>
                     __proto__ и super
@@ -472,7 +472,7 @@ class Название [extends Родитель]  {
                 <img src="img/saharok.jpg" alt=""/>
             </section>
 
-            <section id="slide-32" class="slide">
+            <section id="slide-32" class="slide" data-menu-title="Классы. Пример">
                 <h2>Классы</h2>
 
                 <pre><code data-trim data-noescape class="javascript long-code">
@@ -491,7 +491,7 @@ user.sayHi(); // Вася
                 </code></pre>
             </section>
 
-            <section id="slide-33" class="slide">
+            <section id="slide-33" class="slide" data-menu-title="Классы. Геттеры и сеттеры">
                 <h2>Классы</h2>
                 <p>Геттеры и сеттеры</p>
 
@@ -519,7 +519,7 @@ alert( user.fullName ); // Иван Петров
                 </code></pre>
             </section>
 
-            <section id="slide-34" class="slide">
+            <section id="slide-34" class="slide" data-menu-title="Классы. Статические свойства">
                 <h2>Классы</h2>
                 <p>Статические свойства</p>
 
@@ -540,7 +540,7 @@ let user = User.createGuest();
                 </code></pre>
             </section>
 
-            <section id="slide-35" class="slide">
+            <section id="slide-35" class="slide" data-menu-title="Классы. Наследование">
                 <h2>Классы</h2>
                 <p>Наследование</p>
 
@@ -571,7 +571,7 @@ new Rabbit("Вася").walk();
                 </div>
             </section>
 
-            <section id="slide-36" class="slide">
+            <section id="slide-36" class="slide" data-menu-title="Классы. private и protected">
                 <h2>Классы</h2>
                 <p>private и protected свойства</p>
 
@@ -782,7 +782,7 @@ activeUsers.splice(0, 1); // в weakMap теперь только 1 элемен
                 </code></pre>
             </section>
 
-            <section id="slide-48" class="slide slide-attestation">
+            <section id="slide-48" class="slide slide-attestation" data-menu-title="for..of. 20 лет назад">
                 <h1>Цикл for..of</h1>
 
                 <p>
@@ -795,7 +795,7 @@ for (var index = 0; index < myArray.length; index++) {
                 </code></pre>
             </section>
 
-            <section id="slide-49" class="slide slide-attestation">
+            <section id="slide-49" class="slide slide-attestation" data-menu-title="for..of. ES5">
                 <h1>Цикл for..of</h1>
 
                 <p>
@@ -833,7 +833,7 @@ for (var value of myArray) {
                 </ul>
             </section>
 
-            <section id="slide-51" class="slide">
+            <section id="slide-51" class="slide" data-menu-title="Promise. Callback-hell">
                 <h1>Promise</h1>
 
                 <p>
@@ -857,7 +857,7 @@ promise.then(onFulfilled, onRejected)
                 </code></pre>
             </section>
 
-            <section id="slide-53" class="slide">
+            <section id="slide-53" class="slide" data-menu-title="Promise. Пример">
                 <h1>Promise</h1>
 
                 <p>Пример</p>
@@ -877,7 +877,7 @@ promise.then(
                 </code></pre>
             </section>
 
-            <section id="slide-54" class="slide">
+            <section id="slide-54" class="slide" data-menu-title="Promise. Цепочки">
                 <h1>Promise</h1>
 
                 <p>Цепочки</p>
