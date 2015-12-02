@@ -782,6 +782,246 @@ activeUsers.splice(0, 1); // в weakMap теперь только 1 элемен
                 </code></pre>
             </section>
 
+            <section id="slide-48" class="slide slide-attestation">
+                <h1>Цикл for..of</h1>
+
+                <p>
+                   20 лет назад
+                </p>
+                <pre><code data-trim data-noescape class="javascript">
+for (var index = 0; index < myArray.length; index++) {
+    console.log(myArray[index]);
+}
+                </code></pre>
+            </section>
+
+            <section id="slide-49" class="slide slide-attestation">
+                <h1>Цикл for..of</h1>
+
+                <p>
+                   ES5
+                </p>
+                <pre><code data-trim data-noescape class="javascript">
+myArray.forEach(function (value) {
+    console.log(value);
+});
+
+for (var index in myArray) {    // bad
+    console.log(myArray[index]);
+}
+
+                </code></pre>
+            </section>
+
+            <section id="slide-50" class="slide slide-attestation">
+                <h1>Цикл for..of</h1>
+
+                <p>
+                   ES6
+                </p>
+                <pre><code data-trim data-noescape class="javascript">
+for (var value of myArray) {
+    console.log(value);
+}
+                </code></pre>
+                <p>Плюсы</p>
+                <ul>
+                    <li>Лаконичный</li>
+                    <li>Нет недостатков for..in</li>
+                    <li>Работает с break, continue и return</li>
+                    <li>Работает не только с массивами, но и с объектами, строками, Map, Set</li>
+                </ul>
+            </section>
+
+            <section id="slide-51" class="slide">
+                <h1>Promise</h1>
+
+                <p>
+                   Callback-hell
+                </p>
+                <img src="img/callback-hell.png" alt=""/>
+            </section>
+
+            <section id="slide-52" class="slide">
+                <h1>Promise</h1>
+
+                <p>Синтаксис</p>
+                <pre><code data-trim data-noescape class="javascript">
+var promise = new Promise(function(resolve, reject) {
+// В ней можно делать любые асинхронные операции,
+// А когда они завершатся — нужно вызвать одно из:
+// resolve(результат) при успешном выполнении
+// reject(ошибка) при ошибке
+})
+promise.then(onFulfilled, onRejected)
+                </code></pre>
+            </section>
+
+            <section id="slide-53" class="slide">
+                <h1>Promise</h1>
+
+                <p>Пример</p>
+                <pre><code data-trim data-noescape class="javascript">
+let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("result"), 1000);
+});
+
+promise.then(
+    result => {
+        alert("Fulfilled: " + result); // result - аргумент resolve
+    },
+    error => {
+        alert("Rejected: " + error); // error - аргумент reject
+    }
+);
+                </code></pre>
+            </section>
+
+            <section id="slide-54" class="slide">
+                <h1>Promise</h1>
+
+                <p>Цепочки</p>
+                <pre><code data-trim data-noescape class="javascript long-code">
+httpGet('/article/promise/user.json')
+  // 1. Получить данные о пользователе в JSON и передать дальше
+  .then(response => {
+    let user = JSON.parse(response);
+    return user;
+  })
+  // 2. Получить информацию с github
+  .then(user => {
+    return httpGet(`https://api.github.com/users/${user.name}`);
+  })
+  // 3. Вывести аватар
+  .then(githubUser => {
+    githubUser = JSON.parse(githubUser);
+    let img = new Image();
+    img.src = githubUser.avatar_url;
+    document.body.appendChild(img);
+  })
+                </code></pre>
+            </section>
+
+            <section id="slide-55" class="slide">
+                <h1>Генераторы</h1>
+
+                <p class="align-left">Новый вид функций. </p>
+                <p class="align-left">Могут приостанавливать своё выполнение, возвращать промежуточный результат и далее возобновлять его позже, в произвольный момент времени</p>
+                <pre><code data-trim data-noescape class="javascript">
+function* generateSequence() {
+    yield 1;
+    yield 2;
+    return 3;
+}
+
+let generator = generateSequence();
+
+let one = generator.next(); // {value: 1, done: false}
+let two = generator.next(); // {value: 2, done: false}
+let three = generator.next(); // {value: 3, done: true}
+
+                </code></pre>
+            </section>
+
+            <section id="slide-56" class="slide">
+                <h1>Генераторы</h1>
+
+                <p class="align-left">Пример: Написание "плоского" асинхронного кода.</p>
+                <ul>
+                    <li>Генератор yield'ит не просто значения, а промисы</li>
+                    <li>
+                        Cпециальная функция execute запускает генератор:
+                        <ul>
+                            <li>Последовательно вызывает next и возвращает промис</li>
+                            <li>Когда промис выполняется, то результат промиса возвращается в генератор при следующем вызове next</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Последнее значение генератора (done:true) возвращается во внешний код, например через промис
+                    </li>
+                </ul>
+            </section>
+
+            <section id="slide-57" class="slide">
+                <h1>Генераторы</h1>
+
+                <p class="align-left">Пример: Написание "плоского" асинхронного кода.</p>
+
+                <pre class="wide-code"><code data-trim data-noescape class="javascript long-code">
+function* showUserAvatar() {
+  let user = yield fetch('/article/generator/user.json');
+  let githubUser = yield fetch(`https://api.github.com/users/${user.name}`)
+  return githubUser.avatar_url;
+}
+
+function execute(generator, yieldValue, callback) {
+  let next = generator.next(yieldValue);
+  if (!next.done) {
+    next.value.then(
+      result => execute(generator, result, callback),
+      err => generator.throw(err)
+    );
+  } else {
+    callback(next.value);
+  }
+}
+
+execute( showUserAvatar(), null, callback );
+                </code></pre>
+
+            </section>
+
+            <section id="slide-58" class="slide">
+                <h1>Выводы</h1>
+
+                <ul>
+                    <li>
+                        Очень объемный стандарт
+                    </li>
+                    <li>
+                        Среди фич много синтаксического сахара
+                    </li>
+                    <li>
+                        Но также много фундаментальных фич (let, modules, promises...)
+                    </li>
+                    <li>
+                        Постепенно все перейдет на ES6
+                    </li>
+                    <li>
+                        Можно юзать сейчас благодаря Babel
+                    </li>
+                </ul>
+            </section>
+
+            <section id="slide-59" class="slide">
+                <h1>Ссылки</h1>
+
+                <div class="align-left">
+                    <div>
+                        <a href="https://learn.javascript.ru/es-modern">https://learn.javascript.ru/es-modern</a> - отличный обзор
+                    </div>
+                    <div>
+                        <a href="https://hacks.mozilla.org/category/es6-in-depth/">https://hacks.mozilla.org/category/es6-in-depth/</a> - книга про es6. (en) Есть много переводов глав из этой книги
+                    </div>
+                    <div>
+                        <a href="http://exploringjs.com/es6/">http://exploringjs.com/es6/</a> - ещё книга про es6
+                    </div>
+                    <div>
+                        <a href="http://es6-features.org/">http://es6-features.org/</a> - сниппеты es6 vs es5
+                    </div>
+                </div>
+            </section>
+
+            <section id="slide-60" class="slide">
+                <h1>Вопросы?</h1>
+
+                <img src="img/questionmarks.jpg" alt=""/>
+            </section>
+
+            <section id="slide-61" class="slide">
+                <h1>Спасибо за внимание!</h1>
+            </section>
+
         </div>
     </div>
 

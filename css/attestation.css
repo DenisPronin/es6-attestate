@@ -23,6 +23,10 @@
     max-height: 500px;
 }
 
+.reveal pre.wide-code {
+    width: 100%;
+}
+
 .reveal ul.left-ul {
     display: block;
 }
