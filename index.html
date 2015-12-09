@@ -86,7 +86,7 @@ function showApplesCount() {
                     </code></pre>
                 </div>
                 <div class="col-50">
-                    <h3>ES-2015</h3>
+                    <h3>ES6</h3>
                     <pre><code data-trim data-noescape class="javascript">
 function showApplesCount() {
     let apples = 5; // (*)
@@ -113,7 +113,7 @@ var a = 5;
                     </code></pre>
                 </div>
                 <div class="col-50">
-                    <h3>ES-2015</h3>
+                    <h3>ES6</h3>
                     <pre><code data-trim data-noescape class="javascript">
 alert(a); // ReferenceError
 let a = 5;
@@ -133,7 +133,7 @@ alert(i); // 10
                     </code></pre>
                 </div>
                 <div class="col-50">
-                    <h3>ES-2015</h3>
+                    <h3>ES6</h3>
                     <pre><code data-trim data-noescape class="javascript">
 for(let i=0; i<10; i++) {
     /* … */
@@ -164,12 +164,24 @@ apple = 10; // ошибка
                 <p class="align-left">
                     Особый синтаксис присваивания, при котором можно присвоить массив или объект сразу нескольким переменным, разбив его на части
                 </p>
-                <pre><code data-trim data-noescape class="javascript">
-let [first, last] = ["Первый", "Второй"];
-alert(first); // Первый
-alert(last);  // Последний
-                </code></pre>
-
+                <div class="col-50">
+                    <h3>ES5</h3>
+                    <pre><code data-trim data-noescape class="javascript">
+var coord = [150, 200];
+var x = coord[0];
+var y = coord[1];
+alert(x); // 150
+alert(y);  // 200
+                    </code></pre>
+                </div>
+                <div class="col-50">
+                    <h3>ES6</h3>
+                    <pre><code data-trim data-noescape class="javascript">
+let [x, y] = [150, 200];
+alert(x); // 150
+alert(y);  // 200
+                    </code></pre>
+                </div>
             </section>
 
             <section id="slide-14" class="slide">
@@ -358,7 +370,7 @@ var positive = numbers.filter(function(num) {
                     </code></pre>
                 </div>
                 <div>
-                    <h3>ES-2015</h3>
+                    <h3>ES6</h3>
                     <pre><code data-trim data-noescape class="javascript">
 var positive = numbers.filter(num => num > 0);
                     </code></pre>
