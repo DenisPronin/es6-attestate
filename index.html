@@ -156,14 +156,13 @@ apple = 10; // ошибка
 
             <section id="slide-12" class="slide">
                 <h2>Деструктуризация</h2>
-                <img src="img/cat1.jpg" alt=""/>
+                <p class="align-left">
+                    Особый синтаксис присваивания, при котором можно присвоить массив или объект сразу нескольким переменным, разбив его на части
+                </p>
             </section>
 
             <section id="slide-13" class="slide">
                 <h2>Деструктуризация</h2>
-                <p class="align-left">
-                    Особый синтаксис присваивания, при котором можно присвоить массив или объект сразу нескольким переменным, разбив его на части
-                </p>
                 <div class="col-50">
                     <h3>ES5</h3>
                     <pre><code data-trim data-noescape class="javascript">
@@ -911,6 +910,10 @@ httpGet('/article/promise/user.json')
     img.src = githubUser.avatar_url;
     document.body.appendChild(img);
   })
+  .catch(error => {
+    alert(error);
+  });
+
                 </code></pre>
             </section>
 
@@ -1050,7 +1053,7 @@ execute( showUserAvatar(), null, callback );
             progress: true,
             history: true,
             mouseWheel: false,
-
+            transition: 'fade',
             menu: {
                 themes: false,
                 transitions: false,
